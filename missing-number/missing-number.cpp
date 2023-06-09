@@ -1,10 +1,14 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-       int missing = nums.size(); // Initialize missing as the last index
-        for (int i = 0; i < nums.size(); i++) {
-            missing ^= i ^ nums[i];
+        int n = nums.size();
+        int expectedSum = (n * (n + 1)) / 2; // Sum of numbers from 0 to n
+        int actualSum = 0;
+        
+        for (int num : nums) {
+            actualSum += num;
         }
-        return missing; 
+        
+        return expectedSum - actualSum;
     }
 };
